@@ -1,22 +1,24 @@
 public class Sims {
+    // Atributos privados -------------------------------
     private String nome;
     private int idade;
+    private int sorte;
+    // Atributos publicos --------------------------------
     public String genero;
     public String humor;
     public int fome;
     public int sede;
     Emprego emprego;
-
-
     // Contrutor --------------------------------------------------
     
-    public Sims(String nome, int idade, String genero, String humor, int fome, int sede) {
+    public Sims(String nome, int idade, String genero, String humor, int fome, int sede, int sorte) {
         this.nome = nome;
         this.idade = idade;
         this.genero = genero;
         this.humor = humor;
         this.fome = fome;
         this.sede = sede;
+        this.sorte = sorte;
 
     }
     
@@ -41,8 +43,16 @@ public class Sims {
         this.genero = genero;
     }
     
-    // Metodos
+    public int getSorte() {
+        return sorte;
+    }
+
+    public void setSorte(int sorte) {
+        this.sorte = sorte;
+    }
     
+    // Metodos
+
     public void brincar(){
         if (humor.equals("Brava") || humor.equals("Bravo") ) {
             IO.println(nome + " não quer brincar agora.");
@@ -56,4 +66,17 @@ public class Sims {
         }
     }
 
+    public void morte(){
+        IO.println(nome + " morreu:");
+    }
+
+    public void cozinhar(){
+        if (sorte >= 50) {
+            IO.println(nome + " está cozinhando.");
+        }
+        else{
+            morte();
+            IO.println("tentou cozinhar e se queimou.");
+        }
+    }
 }
